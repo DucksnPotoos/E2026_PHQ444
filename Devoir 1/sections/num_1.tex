@@ -1,0 +1,47 @@
+\problem{Modèle microscopique d'une bande élastique \cite{Tremblay}}
+
+On a $N$ molécules de longueur $d$ liées bout à bout avec un angles de $0^\circ$ ou de $180^\circ$.
+
+Le nombre de combinaison qui donne la distance entre les extrémités du polymère $L = 2dm$ où $m$ est un entier positif est:
+\[
+    \Gamma(N,m) &= 2\frac{N!}{\qty(\frac{N}{2}+m)!\qty(\frac{N}{2}+m)!} \\
+    &\approx \Gamma (N,0)e^{-2\frac{m^2}{N}},~\mbox{pour $m\ll N$}.
+\]
+
+\noindent
+
+\question{Trouvez $S(L,N)$ pour $N \gg 1$ et $L \ll dN$.}
+
+L'entropie s'exprime tel que:
+\[
+    S &= k_B\ln\Gamma(N,m) \\
+    &= k_B\ln\qty[\Gamma(N,0)\exp(\frac{-2m^2}{N})] \notag \\
+    &= k_B\ln\qty[\Gamma(N,0)\exp(\frac{-L^2}{2Nd^2})] \notag \\
+    &= k_B\qty[\ln\Gamma(N,0) - \frac{L^2}{2Nd^2}] \notag \\
+    \iff S(L,N) &= S_0 - \frac{k_BL^2}{2Nd^2}
+\]
+où $S_0 = k_B\ln\Gamma(N,0)$.
+
+\question{Calculez l'énergie libre de Helmholtz avec $E=0$.}
+
+L'énergie libre de Helmholtz est définie telle que:
+\[
+    F &= E - TS. \\
+    \intertext{Or, comme $E=0$, on a:}
+    F &= -TS(L,N) \notag \\
+    &= \frac{k_BTL^2}{2Nd^2} - TS_0.
+\]
+
+\question{Trouvez la force nécessaire pour maintenir la longueur $L$ de la chaine pour $L \ll Nd$.}
+
+On a que $\dd F = -S\dd T + f \dd L$, où $f$ est la force. Donc,
+\[
+    \dd F &= -S\dd T + f \dd L \notag \\
+    \iff f \dd L &= \dd F + S\dd T \notag  \\
+    \iff f &= \pdv{F}{L} + S\pdv{T}{L}. \notag \\
+    \intertext{Or, $T$ ne dépends pas de $L$ d'où:}
+    f &= \frac{k_BTL}{Nd^2}.
+\]
+
+\clearpage
+

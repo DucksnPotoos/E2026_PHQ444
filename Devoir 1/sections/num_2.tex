@@ -1,0 +1,71 @@
+\problem{Impureté de spin $S = 1$ \cite{Tremblay}} 
+
+On a une impureté de spin $S = 1$ dont, dans un champ magnétique, l'énergie peut prendre trois valeurs:
+\[
+\begin{cases}
+    -\mu H\\
+    0
+    \mu H
+\end{cases}.
+\]
+
+\question{Calculez la fonction de partition en fonction de $\frac{\mu H}{k_BT}$.}
+
+La fonction de partition se calcule tel que:
+\[
+    Z_1 &= \sum_{i}e^{-\beta E_i} \notag \\
+    &= e^{\beta\mu H} + e^{-\beta\mu H} +1 \notag \\
+    &= 2 \cosh(\beta\mu H) + 1.
+\]
+
+\question{Calculez l'énergie moyenne.}
+
+L'énergie moyenne se trouve tel que:
+\[
+    \expval{E} &= -\pdv{\ln Z}{\beta} \notag \\
+    &= -\frac{1}{z}\pdv{Z}{\beta} \notag \\
+    &= \frac{-2\sinh(\beta\mu H)\mu H}{2\cosh(\beta\mu H) + 1}.
+\]
+
+\question{Calculez les fluctuations d'énergie.}
+
+La variation de l'énergie, soit sa variance, est définie tel que:
+\[
+    \expval{\Delta E^2} &= \pdv[2]{\ln Z}{\beta} \notag \\
+    \intertext{où l'on peut remplaçer $\expval{E}$ et obtenir:}
+    \expval{\Delta E^2} &= \pdv{\qty(-\expval{E})}{\beta} \notag \\
+    &= \pdv{\beta} \frac{-2\sinh(\beta\mu H)\mu H}{2\cosh(\beta\mu H) + 1} \notag \\
+    &= \frac{4\mu^2H^2 + 2\mu^2H^2\cosh(\beta\mu H)}{\qty[1 + 2\cosh(\beta\mu H)]^2}.
+\]
+
+\question{Calculez l'énergie libre de helmholtz.}
+
+L'énergie libre de helmholtz selon la fonction de partition est définie tel que:
+\[
+    F &= -\frac{\ln Z}{\beta} \notag \\
+    &= -\frac{\ln\qty[2\cosh(\beta\mu H) + 1]}{\beta}.
+\]
+
+\question{Obtenez l'entropie.}
+
+L'entropie selon la fonction de partition est définie tel que:
+\[
+    S &= k_B\ln Z + k_BT \pdv{\ln Z}{T} \notag \\
+    &= k_B \ln\qty[2\cosh(\frac{\mu H}{k_BT}) + 1] + \frac{k_BT}{Z} \pdv{Z}{T} \notag \\
+    &= k_B\ln Z - \frac{2\mu H}{TZ} \sinh(\frac{\mu H}{k_BT}) \notag \\
+    \Rightarrow S &= k_B\ln Z + \frac{1}{T}\expval{E}.
+\]
+
+\question{Calculez son énergie moyenne à partir de $F$.}
+
+L'énergie moyenne en fonction de l'énergie libre de helmholtz est:
+\[
+    \expval{E} &= -\pdv{\qty(\frac{1}{T})}\qty(-\frac{F}{T}) \notag \\
+    &= -\pdv{\qty(\frac{1}{T})} \qty(k_B\ln\qty[2\cosh(\frac{\mu H}{k_BT}) + 1]) \notag \\
+    &= \frac{-2\sinh(\frac{\mu H}{k_BT})\mu H}{2\cosh(\frac{\mu H}{k_BT}) + 1} \notag \\
+    \iff \expval{E} &= \frac{-2\sinh(\beta\mu H)\mu H}{2\cosh(\beta\mu H) + 1}.
+\]
+
+Cette expression est la même que celle trouvée précédemment, ce qui confirme le résultat.
+
+\clearpage
