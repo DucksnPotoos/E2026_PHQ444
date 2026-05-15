@@ -1,46 +1,65 @@
-\problem{Modèle microscopique d'une bande élastique \cite{Tremblay}}
+\problem{Défauts dans un solide}
 
-On a $N$ molécules de longueur $d$ liées bout à bout avec un angles de $0^\circ$ ou de $180^\circ$.
+\question{Obtenez l'entropie de ce solide si n des N atomes occupent des sites interstitiel?}
 
-Le nombre de combinaison qui donne la distance entre les extrémités du polymère $L = 2dm$ où $m$ est un entier positif est:
+Pour un enssemble micro-canonique, l'entropie est défini tel que 
 \[
-    \Gamma(N,m) &= 2\frac{N!}{\qty(\frac{N}{2}+m)!\qty(\frac{N}{2}+m)!} \\
-    &\approx \Gamma (N,0)e^{-2\frac{m^2}{N}},~\mbox{pour $m\ll N$}.
+    S(n) = k_B ln\qty(\Omega(n)).
 \]
 
-\noindent
-
-\question{Trouvez $S(L,N)$ pour $N \gg 1$ et $L \ll dN$.}
-
-L'entropie s'exprime tel que:
+Nous savons que $\Omega(n)$ peut s'écrire comme
 \[
-    S &= k_B\ln\Gamma(N,m) \\
-    &= k_B\ln\qty[\Gamma(N,0)\exp(\frac{-2m^2}{N})] \notag \\
-    &= k_B\ln\qty[\Gamma(N,0)\exp(\frac{-L^2}{2Nd^2})] \notag \\
-    &= k_B\qty[\ln\Gamma(N,0) - \frac{L^2}{2Nd^2}] \notag \\
-    \iff S(L,N) &= S_0 - \frac{k_BL^2}{2Nd^2}
-\]
-où $S_0 = k_B\ln\Gamma(N,0)$.
-
-\question{Calculez l'énergie libre de Helmholtz avec $E=0$.}
-
-L'énergie libre de Helmholtz est définie telle que:
-\[
-    F &= E - TS. \\
-    \intertext{Or, comme $E=0$, on a:}
-    F &= -TS(L,N) \notag \\
-    &= \frac{k_BTL^2}{2Nd^2} - TS_0.
+    \Omega(n) = \frac{N!}{n!(N-n)!}.
 \]
 
-\question{Trouvez la force nécessaire pour maintenir la longueur $L$ de la chaine pour $L \ll Nd$.}
-
-On a que $\dd F = -S\dd T + f \dd L$, où $f$ est la force. Donc,
+En remplaçant cette nouvelle expression d'omega dans la première équation, nous avons
 \[
-    \dd F &= -S\dd T + f \dd L \notag \\
-    \iff f \dd L &= \dd F + S\dd T \notag  \\
-    \iff f &= \pdv{F}{L} + S\pdv{T}{L}. \notag \\
-    \intertext{Or, $T$ ne dépends pas de $L$ d'où:}
-    f &= \frac{k_BTL}{Nd^2}.
+    S(n) &= k_B ln\qty(\frac{N!}{n!(N-n)!}) \notag \\
+    &= k_B ln(N!) - k_B ln(n!) - k_B ln((N-n)!). \notag
+\]
+
+Avec la formule de Stirling, il est possible de développer d'avantage cette équation :
+\[
+    S(n) &= k_B\qty[N ln(N) - N -n ln(n) + n - (N-n) ln(N-n) + N - n] \notag \\
+    &= k_B \qty[N ln(N) - n ln(n) - N ln(N-n) + n ln(N-n)].
+\]
+
+\question{Quelle est la température du solide en équilibre thermodynamique?}
+
+À l'équilibre, nous avons que l'énergie est 
+\[
+    E = N\kappa + n\epsilon
+\]
+
+, où $\kappa$ est l'énergie des atomes. Il est possible de réécrire n en fonction de l'énergie tel que
+\[
+    n = \frac{E - N\kappa}{\epsilon}.
+\]
+
+Il est possible d'exprimer la température en fonction de l'entropie tel que
+\[
+    \frac{1}{T} &= \pdv{S}{E} \notag \\
+    &= \pdv{S}{n}\pdv{n}{E} \notag \\
+    &= k_B ln\qty(\frac{N-n}{n}) \frac{1}{\epsilon}.
+\]
+
+Nous avons donc une expression de la température en fonction de n, N et $\epsilon$ tel que
+\[
+    \frac{1}{T} = k_B ln\qty(\frac{N-n}{n}) \frac{1}{\epsilon}.
+\]
+\question{À partir de (ii), trouvez la fraction n/N des atomes qui se trouvent sur les sites interstitiels à une température T, en équilibre. Supposant $\epsilon$ = 1 eV et T = 300 K, donnez la valeur numérique de n/N.}
+
+Il est possible de réécrire la dernière équation comme 
+\[
+    ln\qty(\frac{N}{n} - 1) &= \frac{\epsilon}{k_BT} \notag \\
+    \frac{N}{n} &= e^{\frac{\epsilon}{k_BT}} + 1 \notag \\
+    \frac{n}{N} &= \frac{1}{e^{\frac{\epsilon}{k_BT}} + 1}.
+\]
+
+Avec les valeurs données dans le problème ainsi que $k_B = 8.61733\time10^{-5}$eV/K, il est possible d'obtenir :
+\[
+    \frac{n}{N} &= \frac{1}{e^{\frac{1}{8.61733\time10^{-5} * 300}} + 1} \notag \\
+    &= 0.
 \]
 
 \clearpage
