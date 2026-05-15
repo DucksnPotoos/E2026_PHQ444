@@ -1,71 +1,103 @@
-\problem{Impureté de spin $S = 1$ \cite{Tremblay}} 
+\problem{Aimantation d'une substance paramagnétique}
 
-On a une impureté de spin $S = 1$ dont, dans un champ magnétique, l'énergie peut prendre trois valeurs:
+\question{Montrez que l'on peut obtenir $\vb{M} = \overline{\bm{\mu}_{\mathrm{tot}}}/{V}$ à partir de la formule générale $\vb{M} = \frac{1}{\beta V} \pdv{\ln Z}{\vb{B}}$.}
+Commençons de la formule générale du moment dipolaire magnétique moyen par unité de volume:
 \[
-\begin{cases}
-    -\mu H\\
-    0
-    \mu H
-\end{cases}.
+    \vb{M} &= \frac{1}{\beta V} \pdv{\ln Z}{\vb{B}} \notag \\
+    &= \frac{1}{\beta V} \frac{1}{Z} \pdv{Z}{\vb{B}} \notag
+    \intertext{Or, on sait que $Z = \sum_{r} e^{-\beta\epsilon_r}$, d'où:} 
+    \vb{M} &= \frac{1}{\beta V} \frac{1}{Z} \pdv{\vb{B}} \qty(\sum_r e^{\beta\mu_r\vb{B}})\notag \\
+    &= \frac{1}{V Z} \sum_r \mu_r \pdv{\vb{B}} \qty(e^{\beta\mu_r\vb{B}}) \notag \\
+    &= \frac{1}{V} \sum_r \frac{e^{-\beta\epsilon_r}}{Z} \notag \\
+    \intertext{On sait que $P_r = \sum_r \frac{e^{-\beta\epsilon_r}}{Z}$. On remplaçe pour trouver:}
+    &= \frac{1}{V} \sum_r \mu_r P_r. \notag \\
+    \intertext{Sachant que la valeur moyenne d'une quantité $O$ est $\overline{O} = \sum_{i} O_i P_i$, on peut trouver:}
+    \vb{M} &= \frac{\overline{\bm{\mu}}}{V}.
 \]
 
-\question{Calculez la fonction de partition en fonction de $\frac{\mu H}{k_BT}$.}
-
-La fonction de partition se calcule tel que:
+\question{Montrez que $\overline{E} = -V\vb{M}\vb{M}$.}
+Par définiton, on a l'énergie moyenntel que:
 \[
-    Z_1 &= \sum_{i}e^{-\beta E_i} \notag \\
-    &= e^{\beta\mu H} + e^{-\beta\mu H} +1 \notag \\
-    &= 2 \cosh(\beta\mu H) + 1.
+    \overline{\epsilon} &= \sum_r \epsilon_r P_r. \notag
+\]
+Sachant que 
+\[
+    \implies \overline{\epsilon} &= -\sum_r \vb{B}\mu_r P_r \notag \\
+    \iff &= - \vb{B}\overline{\mu} + \dots \notag \\
+    &= -\vb{B}\vb{M}V + \dots, \label{eq: 2.1}
+\]
+puisque $\overline{\mu} = V \vb{M}$.
+
+\question{Z pour N particules de spin 1?}
+On sait que $Z_N = Z_1^N$. Trouvons $Z_1$:
+\[
+    Z_1 &= \sum_r e^{-\beta\epsilon_r} \notag \\
+    &= \sum_r e^{-\beta\mu_B\vb{B}} \notag \\
+    &= \sum_r \qty[e^{\beta\mu_B\vb{B}} + 1 + e^{-\beta\mu_B\vb{B}}] \notag \\
+    &= 1 + \cosh\qty(\beta\mu_B\vb{B}). \notag
+\]
+Trouvons maintenant $Z_N$:
+\[
+    Z_N = \qty[1 + 2\cosh\qty(\beta\mu_B\vb{B})]^N. \label{eq: 2.2}
 \]
 
-\question{Calculez l'énergie moyenne.}
-
-L'énergie moyenne se trouve tel que:
+\question{Calculez l'aimantation du système.}
+En substituant l'équation \eqref{eq: 2.2} dans \eqref{eq: 2.1} on obtient:
 \[
-    \expval{E} &= -\pdv{\ln Z}{\beta} \notag \\
-    &= -\frac{1}{z}\pdv{Z}{\beta} \notag \\
-    &= \frac{-2\sinh(\beta\mu H)\mu H}{2\cosh(\beta\mu H) + 1}.
+    \vb{M} &= \frac{1}{\beta V} \pdv{\ln Z_1^N}{\vb{B}}\notag \\
+    &= \frac{N}{Z_1 \beta V } pdv{Z_1}{\vb{B}} \notag \\
+    &= \frac{N}{Z_1 \beta V } \pdv{\vb{B}}\qty[e^{\beta\mu_B\vb{B}} + 1 + e^{-\beta\mu_B\vb{B}}] \notag \\
+    &= \frac{\mu_B N}{V} \frac{2\sinh\qty(\beta\mu_B\vb{B})}{1 + 2\cosh\qty(\beta\mu_B\vb{B})}.
 \]
 
-\question{Calculez les fluctuations d'énergie.}
-
-La variation de l'énergie, soit sa variance, est définie tel que:
+\question{}
+La température caractéristique est définie telle que:
 \[
-    \expval{\Delta E^2} &= \pdv[2]{\ln Z}{\beta} \notag \\
-    \intertext{où l'on peut remplaçer $\expval{E}$ et obtenir:}
-    \expval{\Delta E^2} &= \pdv{\qty(-\expval{E})}{\beta} \notag \\
-    &= \pdv{\beta} \frac{-2\sinh(\beta\mu H)\mu H}{2\cosh(\beta\mu H) + 1} \notag \\
-    &= \frac{4\mu^2H^2 + 2\mu^2H^2\cosh(\beta\mu H)}{\qty[1 + 2\cosh(\beta\mu H)]^2}.
+    k_B T &\approx \mu_B \vb{B}\notag \\
+    \implies T_c &\approx \frac{\mu_B\vb{B}}{k_B}
+\]
+avec
+\[
+    \mu_B &= 9.27 * 10_{-24} \mathrm{J/T} \notag \\
+    k_B &= 1.38 * 10_{-23} \mathrm{J/K}.
 \]
 
-\question{Calculez l'énergie libre de helmholtz.}
-
-L'énergie libre de helmholtz selon la fonction de partition est définie tel que:
+on peux alors trouver $T_c$ tel que:
 \[
-    F &= -\frac{\ln Z}{\beta} \notag \\
-    &= -\frac{\ln\qty[2\cosh(\beta\mu H) + 1]}{\beta}.
+    T_c \approx 0.67 \vb{B} \mathrm{J/T}.
 \]
 
-\question{Obtenez l'entropie.}
-
-L'entropie selon la fonction de partition est définie tel que:
+La susceptibilité magnétique linéaire est définie telle que:
 \[
-    S &= k_B\ln Z + k_BT \pdv{\ln Z}{T} \notag \\
-    &= k_B \ln\qty[2\cosh(\frac{\mu H}{k_BT}) + 1] + \frac{k_BT}{Z} \pdv{Z}{T} \notag \\
-    &= k_B\ln Z - \frac{2\mu H}{TZ} \sinh(\frac{\mu H}{k_BT}) \notag \\
-    \Rightarrow S &= k_B\ln Z + \frac{1}{T}\expval{E}.
+    \chi_M = \frac{\vb{M}}{\vb{B}}. 
 \]
 
-\question{Calculez son énergie moyenne à partir de $F$.}
-
-L'énergie moyenne en fonction de l'énergie libre de helmholtz est:
+à haute température, on a:
 \[
-    \expval{E} &= -\pdv{\qty(\frac{1}{T})}\qty(-\frac{F}{T}) \notag \\
-    &= -\pdv{\qty(\frac{1}{T})} \qty(k_B\ln\qty[2\cosh(\frac{\mu H}{k_BT}) + 1]) \notag \\
-    &= \frac{-2\sinh(\frac{\mu H}{k_BT})\mu H}{2\cosh(\frac{\mu H}{k_BT}) + 1} \notag \\
-    \iff \expval{E} &= \frac{-2\sinh(\beta\mu H)\mu H}{2\cosh(\beta\mu H) + 1}.
+\beta\mu_B\vb{B} &\gg 1\notag \\
+\implies &\begin{cases}
+    \sinh(\beta\mu_B\vb{B}) \approx \beta\mu_B\vb{B}\\
+    \sinh(\beta\mu_B\vb{B}) \approx 1
+\end{cases} \notag \\
+\implies \vb{M} &\approx \frac{2\beta}{3}\frac{\mu_B^2N\vb{B}}{V} \notag \\
+\implies \chi_M &\approx \frac{2\beta}{3}\frac{\mu_B^2N}{V}.
+\]
+on trouve que 
+\[
+    \chi \propto \frac{1}{T}.
 \]
 
-Cette expression est la même que celle trouvée précédemment, ce qui confirme le résultat.
+À basse trempérature, on a:
+\[
+\beta\mu_B\vb{B} &\ll 1\notag \\
+\implies &\begin{cases}
+    \sinh(\beta\mu_B\vb{B}) \approx \frac{e^{\beta\mu_B\vb{B}}}{2}\\
+    \sinh(\beta\mu_B\vb{B}) \approx \frac{e^{\beta\mu_B\vb{B}}}{2}
+\end{cases} \notag \\
+\implies \vb{M} &\approx \frac{N\mu_B}{V} \notag \\
+\implies \chi_M &\approx \frac{N\mu_B}{V}.
+\]
+
+Ici, la magnétisation atteint un maximum. donc, tous les spins sont alignés avec le champ $\vb{B}$.
 
 \clearpage
