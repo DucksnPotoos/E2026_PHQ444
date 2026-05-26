@@ -1,0 +1,66 @@
+\problem{Défauts dans un solide}
+
+\question{Obtenez l'entropie de ce solide si n des N atomes occupent des sites interstitiel?}
+
+Pour un enssemble micro-canonique, l'entropie est défini tel que 
+\[
+    S(n) = k_B ln\qty(\Omega(n)).
+\]
+
+Nous savons que $\Omega(n)$ peut s'écrire comme
+\[
+    \Omega(n) = \frac{N!}{n!(N-n)!}.
+\]
+
+En remplaçant cette nouvelle expression d'omega dans la première équation, nous avons
+\[
+    S(n) &= k_B ln\qty(\frac{N!}{n!(N-n)!}) \notag \\
+    &= k_B ln(N!) - k_B ln(n!) - k_B ln((N-n)!). \notag
+\]
+
+Avec la formule de Stirling, il est possible de développer d'avantage cette équation :
+\[
+    S(n) &= k_B\qty[N ln(N) - N -n ln(n) + n - (N-n) ln(N-n) + N - n] \notag \\
+    &= k_B \qty[N ln(N) - n ln(n) - N ln(N-n) + n ln(N-n)].
+\]
+
+\question{Quelle est la température du solide en équilibre thermodynamique?}
+
+À l'équilibre, nous avons que l'énergie est 
+\[
+    E = N\kappa + n\epsilon
+\]
+
+, où $\kappa$ est l'énergie des atomes. Il est possible de réécrire n en fonction de l'énergie tel que
+\[
+    n = \frac{E - N\kappa}{\epsilon}.
+\]
+
+Il est possible d'exprimer la température en fonction de l'entropie tel que
+\[
+    \frac{1}{T} &= \pdv{S}{E} \notag \\
+    &= \pdv{S}{n}\pdv{n}{E} \notag \\
+    &= k_B ln\qty(\frac{N-n}{n}) \frac{1}{\epsilon}.
+\]
+
+Nous avons donc une expression de la température en fonction de n, N et $\epsilon$ tel que
+\[
+    \frac{1}{T} = k_B ln\qty(\frac{N-n}{n}) \frac{1}{\epsilon}.
+\]
+\question{À partir de (ii), trouvez la fraction n/N des atomes qui se trouvent sur les sites interstitiels à une température T, en équilibre. Supposant $\epsilon$ = 1 eV et T = 300 K, donnez la valeur numérique de n/N.}
+
+Il est possible de réécrire la dernière équation comme 
+\[
+    ln\qty(\frac{N}{n} - 1) &= \frac{\epsilon}{k_BT} \notag \\
+    \frac{N}{n} &= e^{\frac{\epsilon}{k_BT}} + 1 \notag \\
+    \frac{n}{N} &= \frac{1}{e^{\frac{\epsilon}{k_BT}} + 1}.
+\]
+
+Avec les valeurs données dans le problème ainsi que $k_B = 8.61733\time10^{-5}$eV/K, il est possible d'obtenir :
+\[
+    \frac{n}{N} &= \frac{1}{e^{\frac{1}{8.61733\time10^{-5} * 300}} + 1} \notag \\
+    &= 0.
+\]
+
+\clearpage
+

@@ -1,0 +1,43 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+% Custom commands & variables
+\newcommand{\CustomRule}{\rule{16cm}{0.75pt} \\}
+
+\begin{titlepage}
+
+	\centering
+
+	\CustomRule
+	\vspace{0.35cm}
+	{
+		\textsc{\Large\color{\MasterColor}\MakeLowercase{\CourseName}} \\
+		\textsc{\Large\color{\MasterColor}\MakeLowercase{\CourseCode}} \\[1cm]
+	}
+	{
+		\textsc{\Large\MakeLowercase{\Title}} \\
+		\textsc{\Large\MakeLowercase{\SubTitle}} \\
+	}
+	\CustomRule
+	\vspace{2.5cm}
+	{
+                \emph{\large par} \\[0.5cm]
+		{\large\authorA} \\
+		{\large\authorB} \\
+		{\large\authorC} \\[3cm]
+		\emph{\large Remis à} \\[0.25cm]
+                {\large\Professor} \\[3cm]
+	}
+	\includegraphics[scale=0.125]{\Emblem} \\
+	{
+                {\large\University} \\
+                {\large\Faculty} \\
+                {\large\Department} \\
+                {\large\Date}
+	}
+
+\end{titlepage}
+
+\end{document}
+
