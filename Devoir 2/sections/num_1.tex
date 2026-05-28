@@ -1,66 +1,94 @@
-\problem{Défauts dans un solide}
+\problem{Gaz parfait ultrarelativiste dans le régime classique}
 
-\question{Obtenez l'entropie de ce solide si n des N atomes occupent des sites interstitiel?}
+\question{
+    Calculez la fonction de partition d'une particule ultrarelativiste se déplaçant en trois dimension (3D) et en absence de champ magnétique
+    }
 
-Pour un enssemble micro-canonique, l'entropie est défini tel que 
+Pour ce problème, on approxime $\epsilon \approx c\abs{\vb{p}}$.
+On peut trouver la fonction de partition d'une particule ultralativiste tel que:
 \[
-    S(n) = k_B ln\qty(\Omega(n)).
+    \zeta &= \sum_{\va{k},~\va{p},~s} e^{-\beta \epsilon_{\va{k},~\va{p},~s}} \\
+    &= \int_{0}^{\infty} \frac{\dd[3]r \dd[3]p}{h^3} e^{-\beta \epsilon_{\va{k},~\va{p}}} \sum_s e^{-\beta \epsilon_s}. \notag 
+    \intertext{Posons $\sum_s e^{-\beta \epsilon_s} = g$, le facteur de dégénéressence du spin. On obtient alors}
+    \zeta &= \frac{gV}{h^3} \int_{0}^{\infty} \dd[3]p e^{-\beta c \abs{\va{p}}}. \notag \\
+    \intertext{En résolvant l'intégrale on trouve} 
+    \zeta &= \frac{gV}{h^3} 8\pi \notag \\
+    &= \frac{gV}{\lambda_{th}^3},~~~ \text{où $\lambda_{th} = \frac{h\beta c}{\qty(8\pi)^{\frac{1}{3}}}$.}
 \]
 
-Nous savons que $\Omega(n)$ peut s'écrire comme
+\question{
+    Montrez que votre déﬁnition précédente de $\lambda_{th}$ pour les particules ultrarelativistes est cohérente (modulo un facteur numérique de l'ordre d'unité) avec la valeur moyenne de la longueur d'onde de de Broglie.
+    }
+
+On peut approximer la moyenne de la longueur d'onde de de Broglie tel que
 \[
-    \Omega(n) = \frac{N!}{n!(N-n)!}.
+    \expval{\lambda_{th}} &= \expval{\frac{h}{p}} \notag \\
+    &\approx \frac{h}{\expval{\abs{\va{p}}}}.
 \]
 
-En remplaçant cette nouvelle expression d'omega dans la première équation, nous avons
+Trouvons $\expval{p}$:
 \[
-    S(n) &= k_B ln\qty(\frac{N!}{n!(N-n)!}) \notag \\
-    &= k_B ln(N!) - k_B ln(n!) - k_B ln((N-n)!). \notag
+    \expval{p} &= \frac{\int_{0}^{\infty} \dd[3] p \abs{\va{p}} e^{-\beta c \abs{\va{p}}}}{\int_{0}^{\infty} \dd[3] p' e^{-\beta c \abs{\va{p'}}}}. \\
+    &= \frac{6}{\qty(\beta c)^4} \frac{\qty(\beta c)^3}{2} \notag \\
+    &= \frac{3}{\beta c}.
 \]
 
-Avec la formule de Stirling, il est possible de développer d'avantage cette équation :
+On obtient alors
 \[
-    S(n) &= k_B\qty[N ln(N) - N -n ln(n) + n - (N-n) ln(N-n) + N - n] \notag \\
-    &= k_B \qty[N ln(N) - n ln(n) - N ln(N-n) + n ln(N-n)].
+    \expval{\lambda_{th}} &\approx \frac{hc}{3k_B T}
+\]
+ce qui est cohérent avec $\lambda_{th}$ puisque
+\[
+    \lambda{th} &= \qty(8\pi)^{\frac{1}{3}} \notag \\
+    &= \frac{3}{\qty(8\pi)^{\frac{1}{3}}} \expval{\lambda_{th}} \notag \\
+    \Rightarrow \expval{\lambda_{th}} &\propto \lambda_{th}.
 \]
 
-\question{Quelle est la température du solide en équilibre thermodynamique?}
+\question{
+    Calculez le potentiel chimique, l'énergie moyenne, la pression et l'entropie pour un gaz classique ultrarelativiste en 3D et en absence de champ magnétique. Indiquez les similarités et les diﬀérences par rapport aux propriétés du gaz classique non relativiste étudiées en classe.
+    }
 
-À l'équilibre, nous avons que l'énergie est 
+Pour un gaz classique, la fonction de partition est définie tel que:
 \[
-    E = N\kappa + n\epsilon
+    Z_N &= \frac{\zeta^N}{N!} \notag \\
+    \Rightarrow \ln\qty[Z_n] &\approx N\ln\qty[\frac{gV}{N\lambda_{th}^3}]+N.
 \]
 
-, où $\kappa$ est l'énergie des atomes. Il est possible de réécrire n en fonction de l'énergie tel que
+Le potentiel chmique est défini tel que:
 \[
-    n = \frac{E - N\kappa}{\epsilon}.
+    \mu &= \eval{\pdv{F}{N}}_{T,~V} \\
+    \intertext{avec $F = -k_BT\ln\qty[Z_n]$.}
+    \Rightarrow \mu &= -k_BT \pdv{N}\eval(N\ln\qty[\frac{gV}{N\lambda_{th}^3}] + N|_{T,~V} \notag \\
+    &= k_B t \ln\qty[\frac{n \lambda_{th}^3}{g}],~~~ \text{où $n = \frac{N}{V}$.}
 \]
 
-Il est possible d'exprimer la température en fonction de l'entropie tel que
+L'énergie moyenne est définie telle que:
 \[
-    \frac{1}{T} &= \pdv{S}{E} \notag \\
-    &= \pdv{S}{n}\pdv{n}{E} \notag \\
-    &= k_B ln\qty(\frac{N-n}{n}) \frac{1}{\epsilon}.
+    \expval{\epsilon} &= -\pdv{\ln Z_N}{\beta} \notag \\
+    &= 3NkBT.
 \]
 
-Nous avons donc une expression de la température en fonction de n, N et $\epsilon$ tel que
+La pression est définie telle que:
 \[
-    \frac{1}{T} = k_B ln\qty(\frac{N-n}{n}) \frac{1}{\epsilon}.
-\]
-\question{À partir de (ii), trouvez la fraction n/N des atomes qui se trouvent sur les sites interstitiels à une température T, en équilibre. Supposant $\epsilon$ = 1 eV et T = 300 K, donnez la valeur numérique de n/N.}
-
-Il est possible de réécrire la dernière équation comme 
-\[
-    ln\qty(\frac{N}{n} - 1) &= \frac{\epsilon}{k_BT} \notag \\
-    \frac{N}{n} &= e^{\frac{\epsilon}{k_BT}} + 1 \notag \\
-    \frac{n}{N} &= \frac{1}{e^{\frac{\epsilon}{k_BT}} + 1}.
+    p &= k_BT \eval{\pdv{\ln Z_N}{V}}_{T,~N} \notag \\
+    &= Nk_BT.
 \]
 
-Avec les valeurs données dans le problème ainsi que $k_B = 8.61733\time10^{-5}$eV/K, il est possible d'obtenir :
+L'entropie est définie telle que:
 \[
-    \frac{n}{N} &= \frac{1}{e^{\frac{1}{8.61733\time10^{-5} * 300}} + 1} \notag \\
-    &= 0.
+    S &= -\eval{\pdv{F}{T}}_{V,~N}. \notag
 \]
+Or, l'énergie libre de Helmholtz est
+\[
+    F &= \expval{\epsilon} - TS \notag \\
+    \iff S &= \frac{\expval{\epsilon} - F}{T}. \notag \\
+    \intertext{Or, on connait $\expval{\epsilon}$ et $F$, d'où}
+    S &= 3Nk_B \qty(N\ln\qty[\frac{gV}{N\lambda_{th}^3}] + 4).
+\]
+
+Le gaz relativiste et le gaz non-relativiste ont comme similarité leur la forme du potentiel chimique ($\mu \propto k_B T \ln\qty[\frac{n\lambda_{th}^3}{g}]$) et la structure de leur fonction de partition ($\zeta \propto \frac{gV}{\lambda_{th}^3}$).
+
+Ils diffèrent de par leur longueur d'onde thermique ($\lambda_{th}^{NR} \propto T^{-\frac{1}{2}}$ contre $\lambda_{th}^{UR} \propto T^{-1}$), leur énergie moyenne ($\expval{\epsilon_{NR}} = \frac{3}{2}Nk_BT$ contre $\expval{\epsilon_{UR}} = 3Nk_BT$) et de leur relation pression-énergie ($p_{NR} = \frac{2\expval{\epsilon_{NR}}}{3V}$ contre $p_{UR} = \frac{\expval{\epsilon_{UR}}}{3V}$).
 
 \clearpage
 
