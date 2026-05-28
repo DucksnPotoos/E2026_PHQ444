@@ -1,103 +1,45 @@
-\problem{Aimantation d'une substance paramagnétique}
+\problem{Enrichissement de l'uranium par effusion}
 
-\question{Montrez que l'on peut obtenir $\vb{M} = \overline{\bm{\mu}_{\mathrm{tot}}}/{V}$ à partir de la formule générale $\vb{M} = \frac{1}{\beta V} \pdv{\ln Z}{\vb{B}}$.}
-Commençons de la formule générale du moment dipolaire magnétique moyen par unité de volume:
+\question{Calculez le nombre de boîtes qu'il faut pour arriver à un gaz où la concentration relative de
+235U est de 2.5\%  (l'uranium “enrichi”).}
+
+Il est possible de représenter le rapport des flux entre l'uranium 235 l'uranium 238 pour la première boite tel que
 \[
-    \vb{M} &= \frac{1}{\beta V} \pdv{\ln Z}{\vb{B}} \notag \\
-    &= \frac{1}{\beta V} \frac{1}{Z} \pdv{Z}{\vb{B}} \notag
-    \intertext{Or, on sait que $Z = \sum_{r} e^{-\beta\epsilon_r}$, d'où:} 
-    \vb{M} &= \frac{1}{\beta V} \frac{1}{Z} \pdv{\vb{B}} \qty(\sum_r e^{\beta\mu_r\vb{B}})\notag \\
-    &= \frac{1}{V Z} \sum_r \mu_r \pdv{\vb{B}} \qty(e^{\beta\mu_r\vb{B}}) \notag \\
-    &= \frac{1}{V} \sum_r \mu_r \frac{e^{-\beta\epsilon_r}}{Z} \notag \\
-    \intertext{On sait que $P_r = \frac{e^{-\beta\epsilon_r}}{Z}$. On remplaçe pour trouver:}
-    &= \frac{1}{V} \sum_r \mu_r P_r. \notag \\
-    \intertext{Sachant que la valeur moyenne d'une quantité $O$ est $\overline{O} = \sum_{i} O_i P_i$, on peut trouver:}
-    \vb{M} &= \frac{\overline{\bm{\mu}}}{V}.
+    \frac{\Phi_{235}}{\Phi_{238}} &= \frac{\frac{1}{4}n_{235} \bar{v}_{235}}{\frac{1}{4}n_{238} \bar{v}_{238}} \notag \\
+    &= \frac{n_{235}}{n_{238}}\qty(\frac{m_{238}}{m_{235}})^{\frac{1}{2}}. \notag
 \]
 
-\question{Montrez que $\overline{\epsilon} = -V\vb{M}\vb{B}$.}
-Par définiton, on a l'énergie moyenntel que:
+Puisque nous avons de l'hexaﬂuorure d'uranium, nous devons consirérer la masse de l'uranium plus 6 fois la masse du fluore : 
 \[
-    \overline{\epsilon} &= \sum_r \epsilon_r P_r. \notag
-\]
-Sachant que 
-\[
-    \implies \overline{\epsilon} &= -\sum_r \vb{B}\mu_r P_r \notag \\
-    \iff &= - \vb{B}\overline{\mu} + \dots \notag \\
-    &= -\vb{B}\vb{M}V + \dots, \label{eq: 2.1}
-\]
-puisque $\overline{\mu} = V \vb{M}$.
-
-\question{Z pour N particules de spin 1?}
-On sait que $Z_N = Z_1^N$. Trouvons $Z_1$:
-\[
-    Z_1 &= \sum_r e^{-\beta\epsilon_r} \notag \\
-    &= \sum_r e^{-\beta\mu_B\vb{B}} \notag \\
-    &= \sum_r \qty[e^{\beta\mu_B\vb{B}} + 1 + e^{-\beta\mu_B\vb{B}}] \notag \\
-    &= 1 + \cosh\qty(\beta\mu_B\vb{B}). \notag
-\]
-Trouvons maintenant $Z_N$:
-\[
-    Z_N = \qty[1 + 2\cosh\qty(\beta\mu_B\vb{B})]^N. \label{eq: 2.2}
+    \frac{\Phi_{235}}{\Phi_{238}} &= \frac{n_{235}}{n_{238}}\qty(\frac{238 + 6(19)}{235 + 6(19)})^{\frac{1}{2}} \notag \\
+    &= \frac{n_{235}}{n_{238}}\qty(\frac{352}{349})^{\frac{1}{2}} \notag \\
+    &= \frac{n_{235}}{n_{238}}(1.008595989)^{\frac{1}{2}}.
 \]
 
-\question{Calculez l'aimantation du système.}
-En substituant l'équation \eqref{eq: 2.2} dans \eqref{eq: 2.1} on obtient:
+Maintenent, calculons le ratio entre les deux uraniums pour la deuxième boite :
 \[
-    \vb{M} &= \frac{1}{\beta V} \pdv{\ln Z_1^N}{\vb{B}}\notag \\
-    &= \frac{N}{Z_1 \beta V } pdv{Z_1}{\vb{B}} \notag \\
-    &= \frac{N}{Z_1 \beta V } \pdv{\vb{B}}\qty[e^{\beta\mu_B\vb{B}} + 1 + e^{-\beta\mu_B\vb{B}}] \notag \\
-    &= \frac{\mu_B N}{V} \frac{2\sinh\qty(\beta\mu_B\vb{B})}{1 + 2\cosh\qty(\beta\mu_B\vb{B})}.
+    \frac{n_{235}^2}{n_{238}^2} = \frac{n_{235}^1}{n_{238}^1}(1.008595989)^{\frac{1}{2}}, \notag
 \]
 
-\question{}
-La température caractéristique est définie telle que:
+avec l'exposant représentant le nombre de la boîte. Pour la troisième boite, nous avons :
 \[
-    k_B T &\approx \mu_B \vb{B}\notag \\
-    \implies T_c &\approx \frac{\mu_B\vb{B}}{k_B}
-\]
-avec
-\[
-    \mu_B &= 9.27 * 10_{-24} \mathrm{J/T} \notag \\
-    k_B &= 1.38 * 10_{-23} \mathrm{J/K}.
+    \frac{n_{235}^3}{n_{238}^3} &= \frac{n_{235}^2}{n_{238}^2}(1.008595989)^{\frac{1}{2}} \notag \\
+    &= \frac{n_{235}^1}{n_{238}^1}(1.008595989)^{\frac{2}{2}}.
 \]
 
-on peux alors trouver $T_c$ tel que:
+Il est donc possible de généraliser ce problème pour n boites comme 
 \[
-    T_c \approx 0.67 \vb{B} \mathrm{J/T}.
+    \frac{n_{235}^n}{n_{238}^n} &= \frac{n_{235}^1}{n_{238}^1}(1.008595989)^{\frac{n}{2}}.
 \]
 
-La susceptibilité magnétique linéaire est définie telle que:
+Pour le ratio $\frac{n_{235}^n}{n_{238}^n} = \frac{2.5}{97.5}$, nous pouvons trouver le nombre de boites :
 \[
-    \chi_M = \frac{\vb{M}}{\vb{B}}. 
+    \frac{2.5}{97.5} &= \frac{0.7}{99.3}(1.008595989)^{\frac{n}{2}} \notag \\
+    \frac{2.5 * 99.3}{97.5 * 0.7} &= (1.008595989)^{\frac{n}{2}} \notag \\
+    \ln \qty(\frac{2.5 * 99.3}{97.5 * 0.7}) &= \frac{n}{2} \ln (1.008595989) \notag \\
+    n &= \frac{2*\ln \qty(\frac{2.5 * 99.3}{97.5 * 0.7})}{\ln (1.008595989)} \notag \\
+    &= 301.7222975
 \]
 
-à haute température, on a:
-\[
-\beta\mu_B\vb{B} &\gg 1\notag \\
-\implies &\begin{cases}
-    \sinh(\beta\mu_B\vb{B}) \approx \beta\mu_B\vb{B}\\
-    \sinh(\beta\mu_B\vb{B}) \approx 1
-\end{cases} \notag \\
-\implies \vb{M} &\approx \frac{2\beta}{3}\frac{\mu_B^2N\vb{B}}{V} \notag \\
-\implies \chi_M &\approx \frac{2\beta}{3}\frac{\mu_B^2N}{V}.
-\]
-on trouve que 
-\[
-    \chi \propto \frac{1}{T}.
-\]
-
-À basse trempérature, on a:
-\[
-\beta\mu_B\vb{B} &\ll 1\notag \\
-\implies &\begin{cases}
-    \sinh(\beta\mu_B\vb{B}) \approx \frac{e^{\beta\mu_B\vb{B}}}{2}\\
-    \sinh(\beta\mu_B\vb{B}) \approx \frac{e^{\beta\mu_B\vb{B}}}{2}
-\end{cases} \notag \\
-\implies \vb{M} &\approx \frac{N\mu_B}{V} \notag \\
-\implies \chi_M &\approx \frac{N\mu_B}{V}.
-\]
-
-Ici, la magnétisation atteint un maximum. donc, tous les spins sont alignés avec le champ $\vb{B}$.
-
+Il faut donc environs 302 boites afin d'obtenir 2.5\% d'uranium 235.
 \clearpage
