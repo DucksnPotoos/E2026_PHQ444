@@ -1,0 +1,45 @@
+\problem{Enrichissement de l'uranium par effusion}
+
+\question{Calculez le nombre de boîtes qu'il faut pour arriver à un gaz où la concentration relative de
+235U est de 2.5\%  (l'uranium “enrichi”).}
+
+Il est possible de représenter le rapport des flux entre l'uranium 235 l'uranium 238 pour la première boite tel que
+\[
+    \frac{\Phi_{235}}{\Phi_{238}} &= \frac{\frac{1}{4}n_{235} \bar{v}_{235}}{\frac{1}{4}n_{238} \bar{v}_{238}} \notag \\
+    &= \frac{n_{235}}{n_{238}}\qty(\frac{m_{238}}{m_{235}})^{\frac{1}{2}}. \notag
+\]
+
+Puisque nous avons de l'hexaﬂuorure d'uranium, nous devons consirérer la masse de l'uranium plus 6 fois la masse du fluore : 
+\[
+    \frac{\Phi_{235}}{\Phi_{238}} &= \frac{n_{235}}{n_{238}}\qty(\frac{238 + 6(19)}{235 + 6(19)})^{\frac{1}{2}} \notag \\
+    &= \frac{n_{235}}{n_{238}}\qty(\frac{352}{349})^{\frac{1}{2}} \notag \\
+    &= \frac{n_{235}}{n_{238}}(1.008595989)^{\frac{1}{2}}.
+\]
+
+Maintenent, calculons le ratio entre les deux uraniums pour la deuxième boite :
+\[
+    \frac{n_{235}^2}{n_{238}^2} = \frac{n_{235}^1}{n_{238}^1}(1.008595989)^{\frac{1}{2}}, \notag
+\]
+
+avec l'exposant représentant le nombre de la boîte. Pour la troisième boite, nous avons :
+\[
+    \frac{n_{235}^3}{n_{238}^3} &= \frac{n_{235}^2}{n_{238}^2}(1.008595989)^{\frac{1}{2}} \notag \\
+    &= \frac{n_{235}^1}{n_{238}^1}(1.008595989)^{\frac{2}{2}}.
+\]
+
+Il est donc possible de généraliser ce problème pour n boites comme 
+\[
+    \frac{n_{235}^n}{n_{238}^n} &= \frac{n_{235}^1}{n_{238}^1}(1.008595989)^{\frac{n}{2}}.
+\]
+
+Pour le ratio $\frac{n_{235}^n}{n_{238}^n} = \frac{2.5}{97.5}$, nous pouvons trouver le nombre de boites :
+\[
+    \frac{2.5}{97.5} &= \frac{0.7}{99.3}(1.008595989)^{\frac{n}{2}} \notag \\
+    \frac{2.5 * 99.3}{97.5 * 0.7} &= (1.008595989)^{\frac{n}{2}} \notag \\
+    \ln \qty(\frac{2.5 * 99.3}{97.5 * 0.7}) &= \frac{n}{2} \ln (1.008595989) \notag \\
+    n &= \frac{2*\ln \qty(\frac{2.5 * 99.3}{97.5 * 0.7})}{\ln (1.008595989)} \notag \\
+    &= 301.7222975
+\]
+
+Il faut donc environs 302 boites afin d'obtenir 2.5\% d'uranium 235.
+\clearpage
