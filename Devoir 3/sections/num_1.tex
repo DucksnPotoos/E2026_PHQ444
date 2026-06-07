@@ -1,94 +1,112 @@
-\problem{Gaz parfait ultrarelativiste dans le régime classique}
+\problem{Gaz parfait de fermions ultra-relativiste en trois dimension}
 
-\question{
-    Calculez la fonction de partition d'une particule ultrarelativiste se déplaçant en trois dimension (3D) et en absence de champ magnétique
-    }
+\question{Calculez l'énergie de Fermi en fonction de la densité n = N/V du gaz.}
 
-Pour ce problème, on approxime $\epsilon \approx c\abs{\vb{p}}$.
-On peut trouver la fonction de partition d'une particule ultralativiste tel que:
+L'énergie d'un fermion ultra-relativiste peut être réécrit comme 
 \[
-    \zeta &= \sum_{\va{k},~\va{p},~s} e^{-\beta \epsilon_{\va{k},~\va{p},~s}} \\
-    &= \int_{0}^{\infty} \frac{\dd[3]r \dd[3]p}{h^3} e^{-\beta \epsilon_{\va{k},~\va{p}}} \sum_s e^{-\beta \epsilon_s}. \notag 
-    \intertext{Posons $\sum_s e^{-\beta \epsilon_s} = g$, le facteur de dégénéressence du spin. On obtient alors}
-    \zeta &= \frac{gV}{h^3} \int_{0}^{\infty} \dd[3]p e^{-\beta c \abs{\va{p}}}. \notag \\
-    \intertext{En résolvant l'intégrale on trouve} 
-    \zeta &= \frac{gV}{h^3} 8\pi \notag \\
-    &= \frac{gV}{\lambda_{th}^3},~~~ \text{où $\lambda_{th} = \frac{h\beta c}{\qty(8\pi)^{\frac{1}{3}}}$.}
+    \epsilon_p &= cp \notag \\
+    &= c\hbar \mathbf{k}
 \]
 
-\question{
-    Montrez que votre déﬁnition précédente de $\lambda_{th}$ pour les particules ultrarelativistes est cohérente (modulo un facteur numérique de l'ordre d'unité) avec la valeur moyenne de la longueur d'onde de de Broglie.
-    }
-
-On peut approximer la moyenne de la longueur d'onde de de Broglie tel que
+Pour l'énergie de Fermi, nous avons :
 \[
-    \expval{\lambda_{th}} &= \expval{\frac{h}{p}} \notag \\
-    &\approx \frac{h}{\expval{\abs{\va{p}}}}.
+    \varepsilon_F = c\hbar k_F
 \]
 
-Trouvons $\expval{p}$:
+, avec $k_F$ le vecteur d'onde de Fermi.
+
+Or, nous savons que le vecteur d'onde de Fermi pour un gaz de fermion est
 \[
-    \expval{p} &= \frac{\int_{0}^{\infty} \dd[3] p \abs{\va{p}} e^{-\beta c \abs{\va{p}}}}{\int_{0}^{\infty} \dd[3] p' e^{-\beta c \abs{\va{p'}}}}. \\
-    &= \frac{6}{\qty(\beta c)^4} \frac{\qty(\beta c)^3}{2} \notag \\
-    &= \frac{3}{\beta c}.
+    k_F = \qty(\frac{6\pi^2n}{g})^{1/3}
 \]
 
-On obtient alors
-\[
-    \expval{\lambda_{th}} &\approx \frac{hc}{3k_B T}
-\]
-ce qui est cohérent avec $\lambda_{th}$ puisque
-\[
-    \lambda{th} &= \qty(8\pi)^{\frac{1}{3}} \notag \\
-    &= \frac{3}{\qty(8\pi)^{\frac{1}{3}}} \expval{\lambda_{th}} \notag \\
-    \Rightarrow \expval{\lambda_{th}} &\propto \lambda_{th}.
-\]
+, avec n la densité du gaz. En imbriquant les deux équations, nous avons la solution :
 
-\question{
-    Calculez le potentiel chimique, l'énergie moyenne, la pression et l'entropie pour un gaz classique ultrarelativiste en 3D et en absence de champ magnétique. Indiquez les similarités et les diﬀérences par rapport aux propriétés du gaz classique non relativiste étudiées en classe.
-    }
+\solution{energie1}{\varepsilon_F = c\hbar \qty(\frac{6\pi^2n}{g})^{1/3}}
 
-Pour un gaz classique, la fonction de partition est définie tel que:
+\question{ Calculez l'énergie moyenne du gaz en fonction de $\varepsilon_F$ et de N, à T = 0.}
+
+Nous savons que 
 \[
-    Z_N &= \frac{\zeta^N}{N!} \notag \\
-    \Rightarrow \ln\qty[Z_n] &\approx N\ln\qty[\frac{gV}{N\lambda_{th}^3}]+N.
+    E &= \sum_{\lambda}\epsilon_{\lambda}\bar{n}_{\lambda}^F \notag \\
+    &= \sum_{k,s}\epsilon_{k,s}\bar{n}_{k,s}^F.
 \]
 
-Le potentiel chmique est défini tel que:
+Puisqu'il n'y a pas de champ magnétique, la somme sur s est indépendente du reste du calcul. 
+Nous avons donc :
 \[
-    \mu &= \eval{\pdv{F}{N}}_{T,~V} \\
-    \intertext{avec $F = -k_BT\ln\qty[Z_n]$.}
-    \Rightarrow \mu &= -k_BT \pdv{N}\eval(N\ln\qty[\frac{gV}{N\lambda_{th}^3}] + N|_{T,~V} \notag \\
-    &= k_B t \ln\qty[\frac{n \lambda_{th}^3}{g}],~~~ \text{où $n = \frac{N}{V}$.}
+    E &= \frac{gV}{8\pi^3}\int d^3k \epsilon_{k,s}\bar{n}_{k,s}^F \notag \\
+    &= \frac{gV}{8\pi^3}\int d^3k c\hbar \mathbf{k} \Theta(k_F - \mathbf{k}).
+\]
+Réexprimons l'intégrale en coordonnées sphérique :
+\[
+    E &= \frac{4\pi V g}{8\pi^3} \int_{0}^{k_F} dk c\hbar k^3 \notag \\
+    &= \frac{4\pi V g}{8\pi^3} \frac{c\hbar k_F^4}{4} \notag \\
+    &= \frac{V}{8\pi^2}\varepsilon_F k_F^3 g \notag \\
+    &= \frac{6\pi^2 N}{gV} \frac{Vg}{8\pi^2}\varepsilon_F \notag \\
+    &= \frac{3}{4} N \varepsilon_F.
 \]
 
-L'énergie moyenne est définie telle que:
+Nous avons donc la solution :
+\solution{energie2}{E = \frac{3}{4} N \varepsilon_F}
+
+\question{Montrez que la pression (à une température quelconque) est donnée par p = E/3V, où E est l'énergie totale moyenne du gaz. Comparez ce résultat avec celui du gaz non-relativiste}
+
+L'expression de la pression est :
 \[
-    \expval{\epsilon} &= -\pdv{\ln Z_N}{\beta} \notag \\
-    &= 3NkBT.
+    p = -\sum_{\lambda} \pdv{\epsilon_{\lambda}}{V} \bar{n}_{\lambda}^F.
+\]
+Concentrons nous sur la dérivée. Nous obtenons :
+\[
+    \pdv{\epsilon_{\lambda}}{V} &= c\hbar\qty(\frac{6\pi^2N}{g})^{1/3} \pdv{V}\frac{1}{V^{1/3}} \notag \\
+    &= c\hbar\qty(\frac{6\pi^2N}{Vg})^{1/3} \frac{-1}{3V} \notag \\
+    &= \frac{-\epsilon_{\lambda}}{3V}. 
 \]
 
-La pression est définie telle que:
+En rempaçant cette équation dans l'équation initiale de la pression, nous avons :
 \[
-    p &= k_BT \eval{\pdv{\ln Z_N}{V}}_{T,~N} \notag \\
-    &= Nk_BT.
+    p &= \frac{1}{3} \sum_{\lambda} \epsilon_{\lambda} \bar{n}_{\lambda}^F \notag \\
+    &= \frac{E}{3V}.
 \]
 
-L'entropie est définie telle que:
+Nous avons donc une expression tel que :
+\solution{sol1_3}{p = \frac{E}{3V}}
+
+En comparaision avec avec un gaz de fermion non relativiste, nous remarquons que la différence est un facteur 2. 
+Cela peux s'expliquer par l'expression de l'énergie qui n'est pas la même entre les deux gaz. Dans un gaz classique, 
+l'énergie dépend en $k^2$ alors qu'elle dépend en k.
+
+\question{Calculez la susceptibilité de Pauli à température nulle.}
+
+Nous avons d'abord l'aimantation tel que dans les notes de cours :
 \[
-    S &= -\eval{\pdv{F}{T}}_{V,~N}. \notag
+    M = \frac{\mu_Bg}{6\pi^2}\qty(k_{\downarrow}^3 - k_{\uparrow}^3).
 \]
-Or, l'énergie libre de Helmholtz est
+
+Nous savons que dans notre situation $k_{\uparrow} = \frac{\varepsilon_F - \mu_B B}{c\hbar}$ et $k_{\downarrow} = \frac{\varepsilon_F + \mu_B B}{c\hbar}$. 
+Avec cela, nous pouvons continuer la résolution :
 \[
-    F &= \expval{\epsilon} - TS \notag \\
-    \iff S &= \frac{\expval{\epsilon} - F}{T}. \notag \\
-    \intertext{Or, on connait $\expval{\epsilon}$ et $F$, d'où}
-    S &= 3Nk_B \qty(N\ln\qty[\frac{gV}{N\lambda_{th}^3}] + 4).
+    M &= \frac{\mu_Bg}{6\pi^2}\qty(\qty(\frac{\varepsilon_F + \mu_B B}{c\hbar})^3 - \qty(\frac{\varepsilon_F - \mu_B B}{c\hbar})^3) \notag \\
+    &= \frac{\mu_Bg}{6\pi^2} \varepsilon^3 \qty(\qty(1 + \frac{\mu_B B}{\varepsilon_Fc\hbar})^3 - \qty(1 - \frac{\mu_B B}{\varepsilon_Fc\hbar})^3)
 \]
 
-Le gaz relativiste et le gaz non-relativiste ont comme similarité leur la forme du potentiel chimique ($\mu \propto k_B T \ln\qty[\frac{n\lambda_{th}^3}{g}]$) et la structure de leur fonction de partition ($\zeta \propto \frac{gV}{\lambda_{th}^3}$).
+Puisque nous sommes dans un solide, nous pouvons approximer $\mu_BB << \varepsilon_F$. 
+Nous pouvons alors développer l'équation de l'aimantation comme
+\[
+    M &= \frac{\mu_Bg}{6\pi^2} \varepsilon^3 \qty(1 + \frac{3\mu_B B}{\varepsilon_Fc\hbar} - 1 + \frac{3\mu_B B}{\varepsilon_Fc\hbar}) \notag \\
+    &= \frac{\mu_Bg}{6\pi^2} \varepsilon^3 \frac{6\mu_B B}{\varepsilon_Fc\hbar} \notag \\
+    &= \frac{6\mu_B^2B}{\varepsilon_F}n.
+\]
 
-Ils diffèrent de par leur longueur d'onde thermique ($\lambda_{th}^{NR} \propto T^{-\frac{1}{2}}$ contre $\lambda_{th}^{UR} \propto T^{-1}$), leur énergie moyenne ($\expval{\epsilon_{NR}} = \frac{3}{2}Nk_BT$ contre $\expval{\epsilon_{UR}} = 3Nk_BT$) et de leur relation pression-énergie ($p_{NR} = \frac{2\expval{\epsilon_{NR}}}{3V}$ contre $p_{UR} = \frac{\expval{\epsilon_{UR}}}{3V}$).
+Le lien entre la susceptibilité magnétique et l'aimantation est :
+\[
+    M = \chi B.
+\]
 
+Nous avons donc la réponse :
+\[
+    \chi = \frac{M}{B} \notag
+\]
+\solution{1.4}{\chi = \frac{6\mu_B^2B}{\varepsilon_F}n}
 \clearpage
 
