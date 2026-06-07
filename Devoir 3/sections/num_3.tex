@@ -9,6 +9,29 @@ d'obtenir une probabilité totale de 1. Nous avons alors :
 \question{ À partir de la réponse précédente, trouvez la probabilité que la vitesse d'un électron
 soit dans un élément de volume $d^3v$ centré à $\mathbf{v}$. }
 
+L'énergie du gaz pour un gaz de fermion est :
+\[
+    \epsilon_{k,s} = \frac{\hbar^2k^2}{2m} = \frac{m(v - \mathbf{v})^2}{2}.
+\]
+
+Avec cela, réécrivons la statistique de Fermi-Dirac comme
+\[
+    \bar{n}_v^F = \frac{1}{e^{\beta(\frac{m(v - \mathbf{v})^2}{2} - \mu)} +1}.
+\]
+
+Il est donc possible d'écrire la probabilité que la vitesse soit dans un élément de volume tel que 
+\[
+    P(v)d^3v = \frac{\bar{n}_v^F \, d^3v}{\int d^3v \, \bar{n}_v^F}
+\]
+
+Ou encore :
+\solution{3.2}{P(v) = \frac{\bar{n}_v^F}{\int d^3v \, \bar{n}_v^F}}
+
 \question{ En utilisant la réponse précédente, calculez la grandeur moyenne de la vitesse d'un
 électron, $\bar{v}$, à température nulle. }
+
+Nous savons que la valeur moyenne de la vitesse est donnée par 
+\[
+    \bar{v} = \sum v P(v)
+\]
 \clearpage
