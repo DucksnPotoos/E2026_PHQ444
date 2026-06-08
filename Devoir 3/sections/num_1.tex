@@ -56,13 +56,17 @@ L'expression de la pression est :
 \[
     p = -\sum_{\lambda} \pdv{\epsilon_{\lambda}}{V} \bar{n}_{\lambda}^F.
 \]
-Concentrons nous sur la dérivée. Nous obtenons :
+Concentrons nous sur la dérivée. Nous obtenons pour l'énergie de Fermi :
 \[
-    \pdv{\epsilon_{\lambda}}{V} &= c\hbar\qty(\frac{6\pi^2N}{g})^{1/3} \pdv{V}\frac{1}{V^{1/3}} \notag \\
+    \pdv{\epsilon_{F}}{V} &= c\hbar\qty(\frac{6\pi^2N}{g})^{1/3} \pdv{V}\frac{1}{V^{1/3}} \notag \\
     &= c\hbar\qty(\frac{6\pi^2N}{Vg})^{1/3} \frac{-1}{3V} \notag \\
-    &= \frac{-\epsilon_{\lambda}}{3V}. 
+    &= \frac{-\epsilon_{F}}{3V}. 
 \]
 
+Puisque $\epsilon_F$ et $\epsilon_{\lambda}$ ont tous les deux la même dépendance en volume, nous pouvons affirmer que 
+\[
+    \pdv{\epsilon_{\lambda}}{V} = \frac{-\epsilon_{\lambda}}{3V}.
+\]
 En rempaçant cette équation dans l'équation initiale de la pression, nous avons :
 \[
     p &= \frac{1}{3} \sum_{\lambda} \epsilon_{\lambda} \bar{n}_{\lambda}^F \notag \\
