@@ -4,34 +4,56 @@
 
 Nous avons que la probabilité pour une particule d'être dans un état $\lambda$ est égale à la distribution de Fermi-Dirac. Cependant, il est important de la normalisé afin 
 d'obtenir une probabilité totale de 1. Nous avons alors :
-\solution{3.1}{p_{\lambda} = \frac{\bar{n}_{\lambda}^F}{\sum_{\lambda} \bar{n}_{\lambda}^F}}
+\solution{3.1}{p_{\lambda} = \frac{\bar{n}_{\lambda}^F}{N}}
 
 \question{ À partir de la réponse précédente, trouvez la probabilité que la vitesse d'un électron
 soit dans un élément de volume $d^3v$ centré à $\mathbf{v}$. }
 
-L'énergie du gaz pour un gaz de fermion est :
+Nous pouvons réécrire la réponse de la question précédente en fonction de la quantité de monvement comme 
 \[
-    \epsilon_{k,s} = \frac{\hbar^2k^2}{2m} = \frac{m(v - \mathbf{v})^2}{2}.
+    P_{(r, p, s)} d^3r \, d^3p = \frac{1}{N}\sum_{s}\int_{r} d^3r \, d^3p \, \frac{\bar{n}_{p}^F}{h^3}.
 \]
 
-Avec cela, réécrivons la statistique de Fermi-Dirac comme
+Puisque $\frac{\bar{n}_{p}^F}{h^3}$ ne dépend pas de $r$ ni de $s$, nous avons que la probabilité est 
 \[
-    \bar{n}_v^F = \frac{1}{e^{\beta(\frac{m(v - \mathbf{v})^2}{2} - \mu)} +1}.
+    P_{p} d^3p = \frac{2V}{N}\frac{\bar{n}_{p}^F}{h^3} d^3p.
 \]
 
-Il est donc possible d'écrire la probabilité que la vitesse soit dans un élément de volume tel que 
-\[
-    P(v)d^3v = \frac{\bar{n}_v^F \, d^3v}{\int d^3v \, \bar{n}_v^F}
-\]
-
-Ou encore :
-\solution{3.2}{P(v) = \frac{\bar{n}_v^F}{\int d^3v \, \bar{n}_v^F}}
+Avec $p = mv$, nous pouvons exprimer la probabilité en fonction de la vitesse comme 
+\solution{3.2}{P(v) d^3v= \frac{2Vm^3}{N}\frac{\bar{n}_{v}^F}{h^3}d^3v}
 
 \question{ En utilisant la réponse précédente, calculez la grandeur moyenne de la vitesse d'un
 électron, $\bar{v}$, à température nulle. }
 
 Nous savons que la valeur moyenne de la vitesse est donnée par 
 \[
-    \bar{v} = \sum v P(v)
+    \bar{v} &= \int_{v} v P(v) \, d^3v \notag \\
+    &= \int_{v} v \frac{2Vm^3}{N}\frac{\bar{n}_{v}^F}{h^3} \, d^3v \notag \\
+    &= \frac{2Vm^3}{Nh^3} \int_{v} v \bar{n}_{v}^F \, d^3v.
 \]
+
+Intégrons en coordonnée sphérique :
+\[
+    \bar{v} = \frac{8\pi Vm^3}{Nh^3} \int_{0}^{\infty} v^3 \bar{n}_{v}^F \, dv.
+\]
+
+Puisque nous somme à température nulle, $\bar{n}_{v}^F = \Theta(v_F - v)$. Donc, 
+\[
+    \bar{v} &= \frac{8\pi Vm^3}{Nh^3} \int_{0}^{\infty} v^3 \Theta(v_F - v) \, dv \notag \\
+    &= \frac{8\pi Vm^3}{Nh^3} \int_{0}^{v_F} v^3 \, dv \notag \\
+    &= \frac{8\pi Vm^3 v_F^4}{4Nh^3} \notag \\
+    &= \frac{2\pi Vm^3 v_F^4}{Nh^3}
+\]
+
+Pour continuer, trouvons l'expression de N :
+\[
+    N &= \sum_{s}\int_{r}\int_{v}d^3r \, d^3v \, \qty(\frac{m}{h})^3 \bar{n}_{v}^F \notag \\
+    &= 2V \qty(\frac{m}{h})^3 \int_{v} d^3v \, \bar{n}_{v}^F \notag \\
+    &= \frac{8\pi V m^3}{h^3}\int_{0}^{v_f} v^2 \, dv \notag \\
+    &= \frac{8\pi V m^3}{h^3} \frac{v_f^3}{3}
+\]
+
+En remplaçant cette expression de N dans la solution de la vitesse moyenne, nous avons :
+
+\solution{3.3}{\bar{v} = \frac{2\pi Vm^3 v_F^4}{h^3} \frac{3h^3}{8\pi V m^3 v_f^3} = \frac{3v_F}{4}}
 \clearpage
