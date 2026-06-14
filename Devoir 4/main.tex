@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{colors,style,commands}
+
+% Bibliography file
+\addbibresource{refs.bib}
+
+% Default color palette for the document
+\MasterColor    {yale1}
+\MinorColor     {lightyale1}
+
+% Title page
+\CourseName     {Physique Statistique II}
+\CourseCode     {PHQ 444}
+
+\Title          {}
+\SubTitle       {Devoir 3}
+
+% In case of missing authors fill withuse \phantom{noauthor}
+\authorA        {Olivier Poiré (poio2730), }
+\authorB        {Yoakim Provencher (proy1549) }
+\authorC        {\phantom{noauthor}}
+
+\Professor      {Pr Ion Garate}
+
+\Emblem         {UDS} % Choose (UDS, UQTR, BISHOP, MCGILL, ULAVAL, UDEM)
+\University     {Université de Sherbrooke}
+\Faculty        {Faculté des sciences}
+\Department     {Département de physique}
+\Date           {\today}
+
+% Set pdf properties
+\hypersetup{
+                pdftitle={\Title},
+                pdfauthor={\authorA \authorB \authorC},
+                pdfsubject={\CourseName, \CourseCode},
+}
+
+\begin{document}
+
+        \Language{french}
+        
+        \subfile{TitlePage}
+        
+        \clearpage
+        
+        \subfile{sections/num_1}
+        
+        \subfile{sections/num_2}
+
+        \subfile{sections/num_3}
+
+        \clearpage
+
+        % Comment out lines in case of no bibliography
+        \pagestyle{plain}
+        \printbibliography
+
+\end{document}
