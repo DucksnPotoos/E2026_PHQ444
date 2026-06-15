@@ -1,113 +1,73 @@
-\problem{Gaz parfait de fermions ultra-relativiste en trois dimension}
+\problem{Émission de rayonnement par un corps macroscopique}
 
-\question{Calculez l'énergie de Fermi en fonction de la densité n = N/V du gaz.}
+\question{Calculez le nombre de photons $dN(\omega)$, dont la
+fréquence est $\omega$ (à $d\omega$ près), qui sortent à travers du trou dans une intervalle de temps $dt$.}
 
-L'énergie d'un fermion ultra-relativiste peut être réécrit comme 
+Nous savons que la densité en fonction de $\mathbf{k}$ est :
 \[
-    \epsilon_p &= cp \notag \\
-    &= c\hbar \mathbf{k}
+    \frac{dN(\mathbf{k})}{V} &= \sum_{s} \rho(\mathbf{k})\bar{n}_{\mathbf{k}}^B d^3k. \notag
 \]
 
-Pour l'énergie de Fermi, nous avons :
-\[
-    \varepsilon_F = c\hbar k_F
-\]
-
-, avec $k_F$ le vecteur d'onde de Fermi.
-
-Or, nous savons que le vecteur d'onde de Fermi pour un gaz de fermion est
-\[
-    k_F = \qty(\frac{6\pi^2n}{g})^{1/3}
-\]
-
-, avec n la densité du gaz. En imbriquant les deux équations, nous avons la solution :
-
-\solution{energie1}{\varepsilon_F = c\hbar \qty(\frac{6\pi^2n}{g})^{1/3}}
-
-\question{ Calculez l'énergie moyenne du gaz en fonction de $\varepsilon_F$ et de N, à T = 0.}
-
-Nous savons que 
-\[
-    E &= \sum_{\lambda}\epsilon_{\lambda}\bar{n}_{\lambda}^F \notag \\
-    &= \sum_{k,s}\epsilon_{k,s}\bar{n}_{k,s}^F.
-\]
-
-Puisqu'il n'y a pas de champ magnétique, la somme sur s est indépendente du reste du calcul. 
+Or, nous savons que $\rho = \frac{V}{(2\pi )^3}$ et que la somme des polarisations est 2. 
 Nous avons donc :
 \[
-    E &= \frac{gV}{8\pi^3}\int d^3k \, \epsilon_{k,s}\bar{n}_{k,s}^F \notag \\
-    &= \frac{gV}{8\pi^3}\int d^3k \, c\hbar \mathbf{k} \Theta(k_F - \mathbf{k}).
+    dN(\mathbf{k}) = \bar{n}_{\mathbf{k}}^B \frac{2}{(2\pi )^3} d^3k. \notag
 \]
-Réexprimons l'intégrale en coordonnées sphérique :
+
+Maintenant, déterminons le nombre de photons qui sort par le trou :
 \[
-    E &= \frac{4\pi V g}{8\pi^3} \int_{0}^{k_F} dk \, c\hbar k^3 \notag \\
-    &= \frac{4\pi V g}{8\pi^3} \frac{c\hbar k_F^4}{4} \notag \\
-    &= \frac{V}{8\pi^2}\varepsilon_F k_F^3 g \notag \\
-    &= \frac{6\pi^2 N}{gV} \frac{Vg}{8\pi^2}\varepsilon_F \notag \\
-    &= \frac{3}{4} N \varepsilon_F.
+    dN(\mathbf{k}) &= \bar{n}_{\mathbf{k}}^B \frac{2}{(2\pi )^3} d^3k c \, dt \, dS \, \cos(\theta) \notag \\
+    &= \int_{0}^{\frac{\pi}{2}} \sin(\theta) \cos(\theta) \, d\theta \int_{0}^{2\pi} d\phi \bar{n}_k^B \frac{2}{(2\pi )^3} c k^2 \, dk \, dt \, dS. \notag
 \]
 
-Nous avons donc la solution :
-\solution{energie2}{E = \frac{3}{4} N \varepsilon_F}
-
-\question{Montrez que la pression (à une température quelconque) est donnée par p = E/3V, où E est l'énergie totale moyenne du gaz. Comparez ce résultat avec celui du gaz non-relativiste}
-
-L'expression de la pression est :
+Avec Wolfram Alpha, nous trouvons que le résultat des intégrales est de $\pi$. Avec cela, nous avons :
 \[
-    p = -\sum_{\lambda} \pdv{\epsilon_{\lambda}}{V} \bar{n}_{\lambda}^F.
+    dN(\mathbf{k}) &= \pi \bar{n}_k^B \frac{2}{(2\pi )^3}c k^2 \, dk \, dt \, dS \notag \\
+    &= \frac{c \, dS \, dt}{4\pi^2} \bar{n}_k^B k^2 \, dk. \notag
 \]
-Concentrons nous sur la dérivée. Nous obtenons pour l'énergie de Fermi :
+
+Avec la relation $\omega = ck$ et $d\omega = c \, dk$, nous obtenons :
 \[
-    \pdv{\epsilon_{F}}{V} &= c\hbar\qty(\frac{6\pi^2N}{g})^{1/3} \pdv{V}\frac{1}{V^{1/3}} \notag \\
-    &= c\hbar\qty(\frac{6\pi^2N}{Vg})^{1/3} \frac{-1}{3V} \notag \\
-    &= \frac{-\epsilon_{F}}{3V}. 
+    dN(\omega) &= \frac{c \, dS \, dt}{4\pi^2} \bar{n}_{\omega}^B \frac{\omega^2}{c^3} \, d\omega \notag \\
+    &= \frac{\omega^2}{4\pi^2 c^2}\frac{1}{e^{\beta \hbar \omega} - 1} \, d\omega \, dt \, dS.
 \]
 
-Puisque $\epsilon_F$ et $\epsilon_{\lambda}$ ont tous les deux la même dépendance en volume, nous pouvons affirmer que 
+\question{Quelle est l'énergie portée par les photons de (1) ?}
+
+Puisque l'énergie d'un photon est de $\hbar \omega$, l'énergie totale est :
+\[ 
+    dE(\omega) &= \hbar \omega \, dN(\omega) \notag \\
+    &= \frac{\hbar \omega^3}{4\pi^2 c^2}\frac{1}{e^{\beta \hbar \omega} - 1} \, d\omega \, dt \, dS.
+\]
+
+\question{À partir de (2), calculez la puissance totale (incluant toutes les fréquences) par unité
+d'aire émise à travers du trou}
+
+La puissance par unité d'aire est l'énergie total divisé par le temps ainsi que par l'aire. 
 \[
-    \pdv{\epsilon_{\lambda}}{V} = \frac{-\epsilon_{\lambda}}{3V}.
+    P(\omega) &= \frac{dE}{dt \, dS} \notag \\
+    &= \frac{\hbar \omega^3}{4\pi^2 c^2}\frac{1}{e^{\beta \hbar \omega} - 1} \, d\omega. \notag
 \]
-En rempaçant cette équation dans l'équation initiale de la pression, nous avons :
+
+En intégrant sur les fréquences, nous obtenons la puissance totale :
 \[
-    p &= \frac{1}{3} \sum_{\lambda} \epsilon_{\lambda} \bar{n}_{\lambda}^F \notag \\
-    &= \frac{E}{3V}.
+    P_{tot} &= \frac{\hbar}{4\pi^2 c^2} \int_{0}^{\infty} \frac{\omega^3}{e^{\beta \hbar \omega} - 1} \, d\omega \notag \\
+    &= \frac{\hbar}{4\pi^2 c^2} \qty(\frac{k_B T}{\hbar})^4 \int_{0}^{\infty} \frac{x^3}{e^x - 1} \, dx \notag \\
+    &= \frac{k_B^4 T^4}{4\pi^2 c^2 \hbar^3}\frac{\pi^4}{15} \notag \\
+    &= \frac{\pi^2 k_B^4T^4}{60 c^2 \hbar^3}.
 \]
 
-Nous avons donc une expression tel que :
-\solution{sol1_3}{p = \frac{E}{3V}}
+\question{ À partir de (3), montrez que la puissance rayonnée par un corps sphérique de rayon R.}
 
-En comparaision avec avec un gaz de fermion non relativiste, nous remarquons que la différence est un facteur 2. 
-Cela peux s'expliquer par l'expression de l'énergie qui n'est pas la même entre les deux gaz. Dans un gaz classique, 
-l'énergie dépend en $k^2$ alors qu'elle dépend en k.
-
-\question{Calculez la susceptibilité de Pauli à température nulle.}
-
-Nous avons d'abord l'aimantation tel que dans les notes de cours :
+La puissance totale émise par unité d'aire est :
 \[
-    M = \frac{\mu_Bg}{6\pi^2}\qty(k_{\downarrow}^3 - k_{\uparrow}^3).
+    P = \sigma T^4, \notag
 \]
 
-Nous savons que dans notre situation $k_{\uparrow} = \frac{\varepsilon_F - \mu_B B}{c\hbar}$ et $k_{\downarrow} = \frac{\varepsilon_F + \mu_B B}{c\hbar}$. 
-Avec cela, nous pouvons continuer la résolution :
+avec $\sigma$ étant la constante de Stefan-Boltzmann. Pour calculer la puissance totale d'une sphère, 
+Il faut multiplier cette puissance par l'aire d'une sphère, soit $4\pi R^2$. Nous avons donc :
 \[
-    M &= \frac{\mu_Bg}{6\pi^2}\qty(\qty(\frac{\varepsilon_F + \mu_B B}{c\hbar})^3 - \qty(\frac{\varepsilon_F - \mu_B B}{c\hbar})^3) \notag \\
-    &= \frac{\mu_Bg}{6\pi^2} \varepsilon^3 \qty(\qty(1 + \frac{\mu_B B}{\varepsilon_Fc\hbar})^3 - \qty(1 - \frac{\mu_B B}{\varepsilon_Fc\hbar})^3)
+    P = 4\pi R^2 \sigma T^4.
 \]
-
-Puisque nous sommes dans un solide, nous pouvons approximer $\mu_BB << \varepsilon_F$. 
-Nous pouvons alors développer l'équation de l'aimantation comme
-\[
-    M &= \frac{\mu_Bg}{6\pi^2} \varepsilon^3 \qty(1 + \frac{3\mu_B B}{\varepsilon_Fc\hbar} - 1 + \frac{3\mu_B B}{\varepsilon_Fc\hbar}) \notag \\
-    &= \frac{\mu_Bg}{6\pi^2} \varepsilon^3 \frac{6\mu_B B}{\varepsilon_Fc\hbar} \notag \\
-    &= \frac{6\mu_B^2B}{\varepsilon_F}n.
-\]
-
-Le lien entre la susceptibilité magnétique et l'aimantation est :
-\[
-    \chi = \pdv{M}{B}.
-\]
-
-Nous avons donc la réponse :
-\solution{1.4}{\chi = \frac{6\mu_B^2}{\varepsilon_F}n}
 \clearpage
 
