@@ -1,3 +1,27 @@
-\problem{Vitesse moyenne dans un gaz parfait de fermions non relativiste}
+\problem{Condensation de bosons ultrarelativistes}
 
-\question{À partir des observations précédentes, estimez la température de la surface de la Terre.}
+\question{Dérivez (en justifiant les pas suivis) une expression pour la température de Bose-Einstein, en fonction d'une intégrale adimensionnée convergente.}
+
+Nous savons que le nombre de bosons de spin 1 est 
+\[
+    N = \sum_{s} \int_{0}^{\infty} d^3\mathbf{p} \frac{\rho(\mathbf{p})}{e^{\beta(c\mathbf{p}) - \mu} -1}. \notag
+\]
+
+En effectuant l'intégrale en sphérique, nous avons :
+\[
+    \frac{N}{V} &= \frac{3}{2\pi^2\hbar^3} \int_{0}^{\infty} dp \frac{p^2}{e^{\beta(c\mathbf{p}) - \mu} -1} \notag \\
+    n &= \frac{3}{2\pi^2\hbar^3} \int_{0}^{\infty} dp \frac{p^2}{e^{\beta c\mathbf{p}}e^{-\beta \mu} -1}. \notag
+\]
+
+Puisque nous sommes à la température de Bose-Einstein, nous pouvons faire l'approximation 
+$e^{-\beta \mu} \approx 1$. Avec cela et un changement de variable ($\beta c\mathbf{p} = x$), nous obtenons :
+\[
+    n &= \frac{3}{2\pi^2\hbar^3} \qty(\frac{k_B T_B}{c})^3 \int_{0}^{\infty} dx \frac{x^2}{e^x -1} \notag
+    &= \frac{3}{2\pi^2\hbar^3} \frac{k_B^3 T_B^3}{c^3} I(1). \notag
+\]
+
+En isolant la température, nous avons 
+\[
+    T_B^3 &= \qty(\frac{2\pi^2}{3I(1)}n)\frac{c^3\hbar^3}{k_B^3} \notag \\
+    T_B &= \frac{c\hbar}{k_B} \qty(\frac{2\pi^2}{3I(1)}n)^{1/3.}
+\]
