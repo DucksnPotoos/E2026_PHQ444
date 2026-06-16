@@ -1,59 +1,69 @@
-\problem{Vitesse moyenne dans un gaz parfait de fermions non relativiste}
+\problem{Phonons acoustiques en une dimension}
 
-\question{ Quelle est la probabilité de trouver une particule dans un état individuel donné $\lambda$ ?}
+\question{En utilisant le modèle de Debye, obtenez la dépendance de la chaleur spécifique dans la
+température.}
 
-Nous avons que la probabilité pour une particule d'être dans un état $\lambda$ est égale à la distribution de Fermi-Dirac. Cependant, il est important de la normalisé afin 
-d'obtenir une probabilité totale de 1. Nous avons alors :
-\solution{3.1}{p_{\lambda} = \frac{\bar{n}_{\lambda}^F}{N}}
-
-\question{ À partir de la réponse précédente, trouvez la probabilité que la vitesse d'un électron
-soit dans un élément de volume $d^3v$ centré à $\mathbf{v}$. }
-
-Nous pouvons réécrire la réponse de la question précédente en fonction de la quantité de monvement comme 
+Par définission, la chaleur spécifique est 
 \[
-    P_{(r, p, s)} d^3r \, d^3p = \frac{1}{N}\sum_{s}\int_{r} d^3r \, d^3p \, \frac{\bar{n}_{p}^F}{h^3}.
+    C_V &= \qty(\pdv{E}{T})_V \notag \\
+    &= k_B \sum_{k,s} \qty(\frac{\hbar c k}{k_B T})^2 \frac{e^{\beta \hbar c k}}{\qty(e^{\beta \hbar ck} - 1)^2} \notag
 \]
 
-Puisque $\frac{\bar{n}_{p}^F}{h^3}$ ne dépend pas de $r$ ni de $s$, nous avons que la probabilité est 
+Puisque nous somme en 1D et qu'aucuns termes ne dépendent de s, la somme sur s est égale à 1 :
 \[
-    P_{p} d^3p = \frac{2V}{N}\frac{\bar{n}_{p}^F}{h^3} d^3p.
+    C_V &=  k_B \sum_{k} \qty(\frac{\hbar c k}{k_B T})^2 \frac{e^{\beta \hbar c k}}{\qty(e^{\beta \hbar ck} - 1)^2} \notag \\
+    &= k_B \int_{-k_D}^{k_D} \rho(k) \qty(\frac{\hbar c k}{k_B T})^2 \frac{e^{\beta \hbar c k}}{\qty(e^{\beta \hbar ck} - 1)^2} \, dk \notag \\
+    &= \frac{k_B L}{2\pi} \qty(\frac{\hbar c}{k_B T})^2  \int_{-k_D}^{k_D} k^2 \frac{e^{\beta \hbar c k}}{\qty(e^{\beta \hbar ck} - 1)^2} \, dk \notag \\
+    &= \frac{k_B L}{2\pi} \qty(\frac{\hbar c}{k_B T})^2  \int_{-k_D}^{k_D} \frac{k^2}{\qty(e^{\beta \hbar ck}e^{\frac{-\beta \hbar ck}{2}} - e^{\frac{-\beta \hbar ck}{2}})^2} \, dk \notag \\
+    &= \frac{k_B L}{2\pi} \qty(\frac{\hbar c}{k_B T})^2  \int_{-k_D}^{k_D} \frac{k^2}{\qty(e^{\frac{\beta \hbar ck}{2}} - e^{\frac{-\beta \hbar ck}{2}})^2} \, dk \notag \\
+    &= \frac{k_B L}{2\pi} \qty(\frac{\hbar c}{k_B T})^2  \int_{-k_D}^{k_D} \frac{k^2}{4\sinh^2(\frac{\beta \hbar ck}{2})} \, dk \notag
 \]
 
-Avec $p = mv$, nous pouvons exprimer la probabilité en fonction de la vitesse comme 
-\solution{3.2}{P(v) d^3v= \frac{2Vm^3}{N}\frac{\bar{n}_{v}^F}{h^3}d^3v}
-
-\question{ En utilisant la réponse précédente, calculez la grandeur moyenne de la vitesse d'un
-électron, $\bar{v}$, à température nulle. }
-
-Nous savons que la valeur moyenne de la vitesse est donnée par 
+Puisque nous avons une fonction paire, nous pouvons réécrire les bornes de l'intégrale comme 
 \[
-    \bar{v} &= \int_{v} v P(v) \, d^3v \notag \\
-    &= \int_{v} v \frac{2Vm^3}{N}\frac{\bar{n}_{v}^F}{h^3} \, d^3v \notag \\
-    &= \frac{2Vm^3}{Nh^3} \int_{v} v \bar{n}_{v}^F \, d^3v.
+    C_V = \frac{k_B L}{\pi} \qty(\frac{\hbar c}{k_B T})^2  \int_{0}^{k_D} \frac{k^2}{4\sinh^2(\frac{\beta \hbar ck}{2})} \, dk \notag
 \]
 
-Intégrons en coordonnée sphérique :
+Nous pouvons réexprimer le vecteur d'onde de Debye comme $k_D = \frac{T_D}{2T}$ et nous pouvons 
+effectuer le changement de variable $x = \frac{\beta \hbar ck}{2}$. Avec cela, nous pouvons obtenir :
 \[
-    \bar{v} = \frac{8\pi Vm^3}{Nh^3} \int_{0}^{\infty} v^3 \bar{n}_{v}^F \, dv.
+    C_V &= \frac{L}{\pi} \frac{\hbar^2 c^2}{k_B T^2} \frac{2 k_B^3 T^3}{\hbar^3c^3} \int_{0}^{\frac{T_D}{2T}} \frac{x^2}{\sinh^2(x)} \, dx \notag \\
+    &= \frac{2L}{\pi} \frac{k_B^2 T}{\hbar c} \int_{0}^{\frac{T_D}{2T}} \frac{x^2}{\sinh^2(x)} \, dx \notag
 \]
 
-Puisque nous somme à température nulle, $\bar{n}_{v}^F = \Theta(v_F - v)$. Donc, 
+Dans le cas où $T \ll T_D$ :
 \[
-    \bar{v} &= \frac{8\pi Vm^3}{Nh^3} \int_{0}^{\infty} v^3 \Theta(v_F - v) \, dv \notag \\
-    &= \frac{8\pi Vm^3}{Nh^3} \int_{0}^{v_F} v^3 \, dv \notag \\
-    &= \frac{8\pi Vm^3 v_F^4}{4Nh^3} \notag \\
-    &= \frac{2\pi Vm^3 v_F^4}{Nh^3}
+    C_V =  \frac{2L}{\pi} \frac{k_B^2 T}{\hbar c} \int_{0}^{\infty} \frac{x^2}{\sinh^2(x)} \, dx \notag
+\]
+Avec Wolfram Alpha, la solution de l'intégrale est $\frac{\pi^2}{6}$. Donc :
+\[
+    C_V &= \frac{2L}{\pi} \frac{k_B^2 T}{\hbar c} \frac{\pi^2}{6} \notag \\
+    &= \frac{L\pi}{3} \frac{k_B^2 T}{\hbar c}
 \]
 
-Pour continuer, trouvons l'expression de N :
+Nous avons bien une solution linéaire en température.
+Dans le cas où $T \gg T_D$ nous pouvons développer $\sinh(x) \approx x + \frac{x^3}{6} + ...$. 
+En gardant seulement le premier ordre, nous avons :
 \[
-    N &= \sum_{s}\int_{r}\int_{v}d^3r \, d^3v \, \qty(\frac{m}{h})^3 \bar{n}_{v}^F \notag \\
-    &= 2V \qty(\frac{m}{h})^3 \int_{v} d^3v \, \bar{n}_{v}^F \notag \\
-    &= \frac{8\pi V m^3}{h^3}\int_{0}^{v_f} v^2 \, dv \notag \\
-    &= \frac{8\pi V m^3}{h^3} \frac{v_f^3}{3}
+    C_V &= \frac{2L}{\pi} \frac{k_B^2 T}{\hbar c} \int_{0}^{\frac{T_D}{2T}} \frac{x^2}{x^2} \, dx \notag \\
+    &= \frac{2L}{\pi} \frac{k_B^2 T}{\hbar c} \frac{T_D}{2T} \notag  \\
+    &= \frac{L k_B^2 T_D}{\pi \hbar c}
 \]
 
-En remplaçant cette expression de N dans la solution de la vitesse moyenne, nous avons :
+Nous avons bien une solution indépendante de la température.
 
-\solution{3.3}{\bar{v} = \frac{2\pi Vm^3 v_F^4}{h^3} \frac{3h^3}{8\pi V m^3 v_f^3} = \frac{3v_F}{4}}
+\question{En vous rappelant de la chaleur spécifique
+d'un gaz de fermions, indiquez qualitativement comment cela viendra à changer la dépendance
+en température $C_V$ , à basse température}
+
+Puisque nous sommes à $T \ll T_F$, la chaleur spécifique pour des fermions est $C_{V_{fermion}} = \frac{Nk_BT}{T_F}$. 
+La chaleur spécifique totale est donc :
+\[
+    C_V &= C_{V_{phonon}} + C_{V_{fermion}} \notag \\
+    &= \frac{L\pi}{3} \frac{k_B^2 T}{\hbar c} + \frac{Nk_BT}{T_F} \notag \\
+    &= T\qty(\frac{L\pi}{3} \frac{k_B^2}{\hbar c} + \frac{Nk_B}{T_F})
+\]
+
+Nous obtenons donc une relation encore linéraire en température, mais avec un facteur dépendent du nombre de fermion.
+
 \clearpage
